@@ -1,18 +1,49 @@
-<html>
+<!DOCTYPE html>
     <head>
-        <meta charset="utf-8">
+        <meta charset="UTF-8">
         <title>Fill Form Page</title>
         <link rel="stylesheet" type="text/css" href="style.css">
     </head>
+    <header>
+        <a href="home.html">Home</a>
+    </header>
     <body>
         <span> 
         Please choose a file: 
         <input type=file />
         <input type=button value="Load form!"/>
         </span>
+        // TODO will either contain the Waiting thing or the form to fill
         <div id="tochange">
-            Waiting for the form to be chosen...
+            <p>Waiting for the form to be chosen...</p>
+            <form id=qaElementsForm action="">
+                <input type="submit" value="Save form to the cloud!">
+            </form>
+            <a id=contentUrl href="content to be replaced" download="download.html"><button>Download form!</button> </a>
         </div>
-        <footer><a href="home.html">Home</footer>
+
+        <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+        <script>
+            // load form action:
+            // 1/ read the content of form, which is supposed to be an xml
+            // --
+            // 2/ send the file to the be
+            // 3/ the be returns an xml object extracted from the file. 
+            // 4/ the client side uses that object
+            // or
+            // like in the console version, 2/ just let client side read itself the file 
+            // 3/ and then manipulate the object as an xml if possible => convert the loaded cntent to an xml object
+            
+            // save form action on computer: happens when the user clicks on save form on computer!
+            // 1/ fills the answers of the object 
+            // 2/ saves the object into the computer where user indicates it
+
+            // save form action on remote: jappens when the user clicks on sace form on remote!
+            // 1/ fills the answers of the object 
+            // 2/ saves the object into db by calling be. for now same mongo/redis/couch for all users xd 
+            content = "thomas a 3 dents";
+            $("#contentUrl").attr("href", "data:application/xml;charset=utf-8," + content);
+            alert("toto");
+        </script>
     </body>
 </html>
